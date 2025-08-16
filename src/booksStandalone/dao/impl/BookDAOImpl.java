@@ -26,7 +26,7 @@ public class BookDAOImpl implements BookDAO {
 	public List<Book> findAllBooks() {
 		List<Book> result = new ArrayList<>();
 		List<Author> authorList = new ArrayList<>();
-		String sql = "select * from book inner join author on book.id = author.book_id";
+		String sql = "select * from BOOK inner join AUTHOR on BOOK.id = AUTHOR.book_id";
 
 		try {
 
@@ -43,7 +43,7 @@ public class BookDAOImpl implements BookDAO {
 				author.setLastName(resultSet.getString("last_name"));
 				authorList.add(author);
 				book.setAuthors(authorList);
-				// book.setPublisherName(resultSet.getString("publisher"));
+				book.setPublisherName(resultSet.getString("publisher"));
 				result.add(book);
 			}
 		} catch (SQLException ex) {
@@ -57,7 +57,7 @@ public class BookDAOImpl implements BookDAO {
 	public List<Book> searchBooksByKeyword(String keyWord) {
 		List<Book> result = new ArrayList<>();
 		List<Author> authorList = new ArrayList<>();
-		String sql = "select * from book inner join author on book.id = author.book_id" + " where book_title like '%"
+		String sql = "select * from BOOK inner join AUTHOR on BOOK.id = AUTHOR.book_id" + " where book_title like '%"
 				+ keyWord.trim() + "%'" + " or first_name like '%" + keyWord.trim() + "%'" + " or last_name like '%"
 				+ keyWord.trim() + "%'";
 
@@ -70,7 +70,7 @@ public class BookDAOImpl implements BookDAO {
 				Author author = new Author();
 				book.setId(resultSet.getLong("id"));
 				book.setBookTitle(resultSet.getString("book_title"));
-				// book.setPublisherName(resultSet.getString("publisher"));
+				book.setPublisherName(resultSet.getString("publisher"));
 				author.setFirstName(resultSet.getString("first_name"));
 				author.setLastName(resultSet.getString("last_name"));
 				author.setBookId(resultSet.getLong("book_id"));
@@ -89,9 +89,7 @@ public class BookDAOImpl implements BookDAO {
 
 	public List<Category> findAllCategories() {
 		List<Category> result = new ArrayList<>();
-		String sql = "select * from category";
-
-		// Connection connection = null;
+		String sql = "select * from CATEGORY";		
 		try {
 			connection = DataBaseConnection.getConection();
 			PreparedStatement statement = connection.prepareStatement(sql);
