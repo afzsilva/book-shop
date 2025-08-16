@@ -1,0 +1,2 @@
+Para modelagem de dados ver o capitulo :
+Data Model for the Bookstore Application
