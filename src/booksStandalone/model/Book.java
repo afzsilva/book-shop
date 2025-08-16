@@ -9,6 +9,7 @@ public class Book {
 	private Long categoryId;
 	private String bookTitle;
 	private List<Author> authors;
+	private String publisherName;
 	
 	public Book() {	}
 
@@ -43,6 +44,14 @@ public class Book {
 	public void setAuthors(List<Author> authors) {
 		this.authors = authors;
 	}
+		
+	public String getPublisherName() {
+		return publisherName;
+	}
+
+	public void setPublisherName(String publisherName) {
+		this.publisherName = publisherName;
+	}
 
 	@Override
 	public int hashCode() {
@@ -60,7 +69,11 @@ public class Book {
 		Book other = (Book) obj;
 		return Objects.equals(id, other.id);
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Book [Book Id= " + id + "bookTitle= " + bookTitle + "]";
+	}	
 	
 		
 }
