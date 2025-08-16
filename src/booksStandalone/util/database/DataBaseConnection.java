@@ -6,16 +6,16 @@ import java.sql.SQLException;
 
 public class DataBaseConnection {
 
-	private static final String URL = "*****";
-	private static final String USER = "*****";
-	private static final String PASS = "*****";
-	private static final String CLASS_FOR_NAME = "*****";
+	private static final String URL = "jdbc:mysql://localhost:3306/booksdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=America/Sao_Paulo&createDatabaseIfNotExist=true";
+	private static final String USER = "root";
+	private static final String PASS = "root";
+	//private static final String CLASS_FOR_NAME = "com.mysql.cj.jdbc.Driver";
 	private static Connection conect = null;
 
 	public static Connection getConection() {
 
 		try {
-			Class.forName(CLASS_FOR_NAME);
+			//Class.forName(CLASS_FOR_NAME);
 			conect = DriverManager.getConnection(URL, USER, PASS);
 			System.out.println("Conectado >>> " + URL);
 		} catch (Exception e) {
